@@ -1,0 +1,189 @@
+###############################
+## Jenkins Class Notes
+###############################
+
+***************
+Agenda
+***************
+
+- Installation and Configuration
+- Plugins Management ((Manage Jenkins => Manage Plugins))
+- Security and Access Control (Manage Jenkins => Configure Global Security)
+- Global Tool Settings (Manage Jenkins => Global Tool Configuration)
+- Create some pipelines/jobs
+- Parameterized Builds (Passing Arguments at Runtime)
+    - $variablename => Linux
+    - %variablename => Windows
+- Build Slave Architecture (Manage Jenkins => Manage Nodes)
+    - To Distribute the load (Offload things from Master)
+    - To cater to different Environments (OS/programming Language/Platform etc.)
+
+- Build Triggers
+- Pipeline-as-Code (using Jenkinsfile)
+
+
+***************
+Keywords
+***************
+- TTM => Time To Market
+- CI => Continuous Integration
+- CD => Continuous Delivery / Deployment
+  - Delivery => Approvals, Release Cycle [Maintenance Window/Downtime]
+  - Deployment => Automated completed till (and beyond) Prod Deployment.
+- Deployment without Downtime
+- Deployment Strategies (Rolling/Blue-Green/Canary)
+CI server => Jenkins/bamboo/TeamCity
+- Atlassian
+  - Jira
+  - BitBucket
+  - Confluence
+  - Bamboo
+
+- Java Build Tools:
+  - ANT (Build.xml)
+  - Maven (pom.xml)
+  - Gradle (Build.xml)
+
+.Net Build Tools:
+- MSBuild
+
+
+- Projects/Jobs can be used interchangeably
+- Builds => Iteration of a Job
+
+
+===============================
+Installation and Configuration
+===============================
+
+Jenkins Versions:
+
+OpenSource: https://jenkins.io/download/
+Enterprise: https://www.cloudbees.com/products/cloudbees-jenkins-distribution
+
+$JENKINS_HOME = /var/lib/jenkins
+/var/lib/jenkins/workspace
+
+*******************************
+Installation Pre-requisites:
+*******************************
+Reference: https://pkg.jenkins.io/debian-stable/
+*******************************
+
+- Java-8
+# Java installation steps on Ubuntu 16.04 (if it's not present already)
+sudo apt-get update
+sudo apt-get install openjdk-8-jdk
+java -version
+openjdk version "1.8.0_212"
+OpenJDK Runtime Environment (build 1.8.0_212-8u212-b03-0ubuntu1.16.04.1-b03)
+OpenJDK 64-Bit Server VM (build 25.212-b03, mixed mode)
+
+# Jenkins Installation
+
+1. Add key:
+wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+
+2. Add the following entry in your /etc/apt/sources.list:
+echo "deb https://pkg.jenkins.io/debian-stable binary/" >> /etc/apt/sources.list
+
+3. sudo apt-get update
+4. sudo apt-get install jenkins
+
+## Check if Jenkins service is running:
+sudo systemctl status jenkins
+
+## Access Jenkins server on Port 8080:
+
+- Type the following URL in your web browser:
+
+  - IPaddress:8080 => If you have a Public IP for your Jenkins Server
+  - localhost:8080 => If you are using a browser on the Jenkins server itself
+
+## Provide the Initial Admin password on the GUI:
+
+- sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
+## Install Suggested Plugins
+
+## Create First Admin User
+
+**** Congratulations! Your Jenkins Server is Configured and ready to use.***
+
+===================
+
+===================
+
+.hpi (Hudson)
+.jpi (Jenkins)
+
+
+Check service status:
+
+Ubuntu 14 or below / RHEL 4/5/6 => sudo service jenkins status/start/stop/restart
+Ubuntu 16+/RHEL 7+ => sudo systemctl status/start/stop/restart jenkins
+
+***************************
+AAA of Security
+***************************
+A => Authentication (validation of User/Identity)
+    MFA (Multi Factor Authentication)
+    => What you know  => User id and Password / Authentication Questions
+    => What you have  => Token / OTP devices
+    => What you are   => Biometrics
+A => Authorization
+A => Accountability (Auditing/logging)
+
+Java Build Tools:
+  ANT
+  Gradle
+  Maven
+    Goals
+    - compile
+    - test
+    - package
+    - clean install
+    - deploy
+
+mvn test
+mvn compile
+mvn clean install
+
+Output => .war / .jar => QA Team
+
+
+===================
+References:
+===================
+
+
+https://www.thoughtworks.com/continuous-integration
+https://www.cloudbees.com/jenkins/jenkins-certification
+https://d1.awsstatic.com/whitepapers/AWS_DevOps.pdf
+
+Maven Reference:
+https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html
+http://tutorials.jenkov.com/maven/maven-commands.html
+
+
+Questions:
+
+Q. CI makes my code Bug Free... True or False?
+Ans: False
+
+Q. How many parallel jobs I can run on a Jenkins CI server?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.

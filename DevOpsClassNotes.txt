@@ -122,7 +122,7 @@ Action Item:
 =========================
 
 - create a GitHub Account
-- 2 (or more) Linux machines - preferebly Ubuntu 16.04 (Only CLI. We don't need GUI)
+- 2 (or more) Linux machines - preferably Ubuntu 16.04 (Only CLI. We don't need GUI)
 - Simplilearn / AWS/Azure/GCP/DigitalOcean/VirtualBox/Hyper-V
 - Configure Termius (Optional)
 - Go through the content (pdf file for Module 2)

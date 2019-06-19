@@ -81,19 +81,52 @@ git remote add <remotename> <remoteURL>
 Pull vs Clone => Clone is first time, Pull/Push is for subsequent operations to keep your repository in sync.
 Pull = Fetch + Merge
 
-
-
+=======================
 Branching and Merging
+=======================
+
+Why Branching?
+  - Parallel Development
+  - Isolated Sandboxed environments for Coding and Development
+
+Commands:
+git branch          => to see all the existing branches
+git branch fa       => Create a new branch with name "fa"
+git checkout fa     => Switch to branch "fa"
+git checkout -b fa  => create a new branch by name "fa" and switch to it.
+
+## Merge fa branch with Master
+git checkout master
+git merge fa
+
+## Merge Master with FA branch
+git checkout fa
+git merge master
+
+
+## Clone a Specific branch from remote repo:
+
+Syntax:
+git clone -b <branch> <remote_repo>
+Example:
+git clone -b fa https://github.com/sk12k/sl-docs-june-2019.git
+
+=================
 Merge Conflicts
-Pull Request
+=================
+<<<<<<< HEAD
+this line was added in master branch
+=======
+This line was added in fa branch
+>>>>>>> fa
 
+
+** Always do git pull first before you push your changes!!
 
 
 
 https://github.com/sk12k/sl-docs-june-2019.git
 https://github.com/sk12k/sl-docs-june-2019.git
-
-
 
 
 
@@ -110,6 +143,9 @@ Linux commands to familiarize:
 
 References:
 https://github.com/sk12k/tr-files/tree/master/git
+
+Stash link to be shared
+Rebase link to be shared
 
 
 .
