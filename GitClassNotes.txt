@@ -124,13 +124,10 @@ This line was added in fa branch
 ** Always do git pull first before you push your changes!!
 
 
-
-https://github.com/sk12k/sl-docs-june-2019.git
-https://github.com/sk12k/sl-docs-june-2019.git
-
-
-
+==============================
 Linux commands to familiarize:
+==============================
+
   - touch
   - echo
   - cd
@@ -140,12 +137,16 @@ Linux commands to familiarize:
   - pwd
 
 
-
+==============================
 References:
-https://github.com/sk12k/tr-files/tree/master/git
+==============================
 
-Stash link to be shared
-Rebase link to be shared
 
+https://git-scm.com/book/en/v2
+https://www.atlassian.com/git/tutorials/advanced-overview
+https://www.atlassian.com/git/tutorials/saving-changes/git-stash
+http://gitimmersion.com/
+https://www.git-tower.com/learn/
+http://rogerdudler.github.io/git-guide/
 
 .
