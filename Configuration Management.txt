@@ -1,0 +1,79 @@
+###############################
+## Configuration Management
+###############################
+
+Puppet  [2005]
+Chef    [2007]
+Ansible [2012] => 2015 it was acquired by RedHat
+
+
+
+Keywords:
+
+- Configuration Management
+- Configuration Drift
+- Self-Healing
+- Out-of-Band Changes
+- Idempotence
+- DSC => Desired State Configuration
+- DSL => Domain Specific Language
+- Infrastructure-as-Code
+- Immutable Infrastructure
+- Templates / Images
+    - VMware Templates
+    - AMI => Amazon Machine Images
+    - Docker => Images
+    - Vagrant => Box
+    - OpenStack => Images
+    - DigitalOcean => Templates/Snapshot
+
+Standard / Golden Template
+
+Configuration Items:
+
+  - packages
+  - users
+  - services
+  - network Settings
+  - security configuration
+  -
+
+
+
+AppA
+
+Dev Machines
+
+- .net framework 4.5
+- user x has read permission on folder y
+- Port 8888 which is closed
+- user expertdba
+
+
+
+- .Net 5.0
+- user x has r/w permission on folder y
+- Port 8888 is open
+
+
+AppA version 1.3 => 1.4
+
+
+yum update
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.

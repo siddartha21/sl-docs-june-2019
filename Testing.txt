@@ -2,7 +2,26 @@
 ## Testing
 ###############################
 
-Levels of Testing:
+Keywords:
+
+CDN => CloudFront, AWS (Using Edge Locations)
+AEM => Adobe Experience Manager
+LDAP / AD => OAuth / SAML
+API Developers / API Consumers
+API => Application programming Interface
+  - SOAP
+  - REST
+Facebook => react.js
+Technical Debt
+Time-to-Market => idea conceived -> deliver to market
+Shift Left
+
+
+
+=======================
+Levels of Testing
+=======================
+
 - Unit
 - Integration
 - Regression Testing
@@ -14,7 +33,70 @@ TDD => Test Driven Development
 BDD => Behavior Driven Development
 
 
+FeatureA + FeatureB + FeatureC + FeatureD
+
+FeatureE
+
+
+2*5 = 10
+
+
 
 - Unit Testing
 - Integration Testing
 - Regression Testing
+
+TDD (Test Driven Development)
+  - Write your test cases (before you write your code)
+  - Run the tests and see them fail
+  - Modify your code to make the test pass
+  - Refactoring and repeat
+
+BDD (Behavior Driven Development)
+  - Emphasis is on Collaboration
+3 Amigos
+  - Product Owner
+  - Tester
+  - Developers
+
+=> Scenarios
+  => Given.....
+  => When......
+  => Then......
+
+
+
+
+=====================
+References:
+=====================
+
+
+https://www.softwaretestinghelp.com/types-of-software-testing/
+https://www.guru99.com/levels-of-testing.html
+http://softwaretestingfundamentals.com/software-testing-levels/
+https://www.inspec.io/
+
+
+
+- References for Selenium
+- PDF for API
+- References for SOAP vs REST
+
+
+
+
+
+Requirement Gathering => Code => Testing => Deploy-to-Prod
+
+
+
+Write the cases first before you write your first line of code?
+
+
+
+
+
+
+
+.

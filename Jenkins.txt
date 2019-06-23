@@ -172,6 +172,24 @@ curl http://165.22.143.211:8080/job/localrepo/build?token=june-batch
 
 ***For Windows, use "invoke-webrequest"***
 
+==========================================
+GitHub Push Settings for Automated builds
+==========================================
+
+Step1 - Create a new Authentication Token in GitHub
+  - Login to GitHub Page
+  - Go to Profile settings (top right corner of the browser)
+  - Go to
+
+Step2 - Update Jenkins "Configure System" with GitHub Token
+  -
+  -
+
+Step3 - When the job has been created, make sure to check the following option under build trigger section:
+  "GitHub hook trigger for GITScm polling"
+
+
+
 ===================
 References:
 ===================
