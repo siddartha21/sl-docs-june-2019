@@ -1,0 +1,20 @@
+###############################
+## Testing
+###############################
+
+Levels of Testing:
+- Unit
+- Integration
+- Regression Testing
+- System
+- Acceptance
+
+
+TDD => Test Driven Development
+BDD => Behavior Driven Development
+
+
+
+- Unit Testing
+- Integration Testing
+- Regression Testing

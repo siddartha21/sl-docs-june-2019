@@ -17,9 +17,25 @@ Agenda
 - Build Slave Architecture (Manage Jenkins => Manage Nodes)
     - To Distribute the load (Offload things from Master)
     - To cater to different Environments (OS/programming Language/Platform etc.)
+- Upstream/Downstream Projects
+  testjob => downstream Project
 
 - Build Triggers
+  - Manual Build
+  - Build after other Projects
+  - Build Periodically
+  - Poll SCM
+  - Trigger builds remotely (Webhooks)
+      - .git/hooks/post-commit (This is where you put your curl endpoint)
+      - ##Sample Curl endpoint => curl http://165.22.143.211:8080/job/localrepo/build?token=june-batch
+
+*** file:///tmp/git-june => syntax to put SourceCode if using a local repository.
+
 - Pipeline-as-Code (using Jenkinsfile)
+  - I-a-C
+  - Reusable Jenkinsfile
+  - Automatic backup on SCM
+  - No need to take additional Backup for Jenkins Server
 
 
 ***************
@@ -152,6 +168,10 @@ mvn clean install
 Output => .war / .jar => QA Team
 
 
+curl http://165.22.143.211:8080/job/localrepo/build?token=june-batch
+
+***For Windows, use "invoke-webrequest"***
+
 ===================
 References:
 ===================
@@ -160,6 +180,7 @@ References:
 https://www.thoughtworks.com/continuous-integration
 https://www.cloudbees.com/jenkins/jenkins-certification
 https://d1.awsstatic.com/whitepapers/AWS_DevOps.pdf
+https://jenkins.io/doc/book/pipeline/getting-started/ => Pipeline-as-Code
 
 Maven Reference:
 https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html
@@ -177,7 +198,7 @@ Q. How many parallel jobs I can run on a Jenkins CI server?
 
 
 
-
+curl http://165.22.143.211:8080/job/triggertest/build?token=trigger
 
 
 
