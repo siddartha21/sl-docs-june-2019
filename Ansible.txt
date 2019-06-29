@@ -2,6 +2,52 @@
 ##Ansible
 ##################
 
+Chef => Ruby / Erlang
+Puppet => Ruby / Java
+Ansible / Salt => Python
+
+
+Pre-requisites:
+  - ssh connectivity (Passwordless)
+  - Python (on Both Master and nodes)
+
+========================
+PasswordLess Authentication
+=======================
+## Create a System Account
+adduser ansible
+sudo usermod -aG sudo ansible
+visudo
+%sudo (ALL)=(ALL) NOPASSWD:ALL
+
+## Create passwordless Authentication
+su - ansible
+ssh-keygen -t rsa
+ssh ansible@178.128.12.237 mkdir -p .ssh
+cat .ssh/id_rsa.pub | ssh ansible@178.128.12.237 'cat  >> .ssh/authorized_keys'
+
+*****************
+Restart service
+*****************
+sudo service sshd restart
+sudo systemctl restart sshd
+
+
+=======================
+Installation
+=======================
+sudo apt-add-repository ppa:ansible/ansible
+sudo apt-get update
+sudo apt-get install ansible -y
+
+
+
+
+
+
+
+
+
 
 
 
