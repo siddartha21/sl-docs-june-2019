@@ -6,15 +6,22 @@ Puppet  [2005]
 Chef    [2007]
 Ansible [2012] => 2015 it was acquired by RedHat
 
-
-
+**********************
+Chef Resources:
+manage.chef.io => for hosted chef server
+https://learn.chef.io/ => Chef official Tutorials
+https://learn.chef.io/tracks/infrastructure-automation#/
+**********************
 Keywords:
 
 - Configuration Management
 - Configuration Drift
 - Self-Healing
 - Out-of-Band Changes
-- Idempotence
+- Idempotence / Idempotent
+
+
+
 - DSC => Desired State Configuration
 - DSL => Domain Specific Language
 - Infrastructure-as-Code
@@ -66,9 +73,78 @@ yum update
 
 
 
+******************
+chef recipe:
+******************
+
+package "nginx" do
+  action :install
+end
+
+user "sk12k" do
+  action :create
+end
+
+Service "httpd" do
+  action :start
+end
+******************
+Puppet manifest:
+******************
+
+package { 'install_nginx':
+  name    => 'nginx',
+  ensure  => 'present',
+}
+
+******************
+Ansible playbook:
+******************
+
+- name: install nginx
+  apt:
+     name: nginx
+     state: present
 
 
+=============================
+Puppet Manifests
+=============================
 
+node default {
+  package { 'tree':
+    ensure => 'installed',
+ }
+  file { '/tmp/info.txt':
+    ensure => 'present',
+    content => "This file was created via puppet"
+ }
+  user { 'sk12k':
+    ensure => 'present',
+    password => '123456'
+ }
+}
+
+===========================
+Apache config using Puppet (With Meta Parameters)
+===========================
+node default {
+  package { 'apache2':
+    ensure  => present,
+    before => File['/var/www/html/index.html']
+}
+  file { '/var/www/html/index.html':
+    ensure  => 'present',
+    content => "<h1>This page was created by Puppet using Puppet Site.PP file</h1>",
+    notify  => Service['apache2']
+    require => Package['apache2']
+}
+  service { 'apache2':
+    ensure  => running,
+    enable  => true,
+    subscribe => File['/var/www/html/index.html']
+}
+}
 
 
 
