@@ -19,9 +19,6 @@ Keywords:
 - Self-Healing
 - Out-of-Band Changes
 - Idempotence / Idempotent
-
-
-
 - DSC => Desired State Configuration
 - DSL => Domain Specific Language
 - Infrastructure-as-Code
@@ -67,10 +64,6 @@ AppA version 1.3 => 1.4
 
 
 yum update
-
-
-
-
 
 
 ******************

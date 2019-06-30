@@ -6,18 +6,19 @@ Chef => Ruby / Erlang
 Puppet => Ruby / Java
 Ansible / Salt => Python
 
+#userdata
 
 Pre-requisites:
   - ssh connectivity (Passwordless)
   - Python (on Both Master and nodes)
 
-========================
+================================
 PasswordLess Authentication
-=======================
+================================
 ## Create a System Account
 adduser ansible
 sudo usermod -aG sudo ansible
-visudo
+visudo => /etc/sudoers
 %sudo (ALL)=(ALL) NOPASSWD:ALL
 
 ## Create passwordless Authentication
@@ -25,6 +26,10 @@ su - ansible
 ssh-keygen -t rsa
 ssh ansible@178.128.12.237 mkdir -p .ssh
 cat .ssh/id_rsa.pub | ssh ansible@178.128.12.237 'cat  >> .ssh/authorized_keys'
+
+##Alternatively you can use below command as well to copy ssh key:
+
+ssh-copy-id -i .ssh/id_rsa.pub ansible@<ipaddress>
 
 *****************
 Restart service
@@ -41,19 +46,106 @@ sudo apt-get update
 sudo apt-get install ansible -y
 
 =======================
+ansible.cfg => /etc/ansible/ansible.cfg
+=======================
+root / ec2-user
+
+[defaults]
+remote_user = ec2-user
+private_key_file = /home/ansible/.ssh/id_rsa
+host_key_checking = False
+
+=======================
+Inventory File
+=======================
+Default location: /etc/ansible/hosts
+use -i if you want to provide any other file.
+
+[nodes]
+slmaster ansible_host=206.189.208.63
+slnode ansible_host=178.128.12.237
+
+[win-nodes]
+slmaster ansible_host=206.189.208.63
+slnode ansible_host=178.128.12.237
+
+[local]
+slmaster ansible_host=206.189.208.63
+
+[Ubuntu:members]
+nodes
+win-nodes
+local
+
+
+Ex: A collection of hosts belonging to the 'webservers' group
+
+## [webservers]
+## alpha.example.org
+## beta.example.org
+## 192.168.1.100
+## 192.168.1.110
+
+Reference: https://docs.ansible.com/ansible/2.3/intro_inventory.html
+
+=======================
 Ad-Hoc Commands
 =======================
 ansible all -m ping
-
-
-
-
-
+ansible all -a "ls -al /home/ansible"
+ansible all -a "cat /var/log/messages"
+ansible all -m apt -a "name=tree state=present" --become
+ansible all -m user -a "name=test state=absent"
+ansible --list-hosts all
 
 
 =======================
 Playbooks
 =======================
+# ping.yml
+---
+- hosts: all
+  remote_user: ansible
+  become: yes
+  tasks:
+    - name: Ping all servers
+      action: ping
+
+
+# This is a demo file to explain about Ansible Playbooks
+---
+- hosts: nodes
+  remote_user: ansible
+  become: yes
+  become-method: sudo
+  connection: ssh
+  tasks:
+  - name: Install apache on all nodes
+    apt:
+      name: apache2
+      state: latest
+    notify:
+     - Startservice
+  handlers:
+  - name: Startservice
+    service:
+      name: apache2
+      state: restarted
+
+
+# Variable substitution in Ansible Playbooks
+---
+- hosts: '{{ myhosts }}'
+  remote_user: ansible
+  become: yes
+  become_method: sudo
+  connection: ssh
+  tasks:
+  - name: Install indicated softwares on specified nodes
+    apt:
+      name: '{{ pkg }}'
+      state: latest
+
 
 
 
