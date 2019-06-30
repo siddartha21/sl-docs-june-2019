@@ -40,6 +40,10 @@ sudo apt-add-repository ppa:ansible/ansible
 sudo apt-get update
 sudo apt-get install ansible -y
 
+=======================
+Ad-Hoc Commands
+=======================
+ansible all -m ping
 
 
 
@@ -47,10 +51,9 @@ sudo apt-get install ansible -y
 
 
 
-
-
-
-
+=======================
+Playbooks
+=======================
 
 
 
