@@ -41,29 +41,16 @@ Configuration Items:
   - network Settings
   - security configuration
   -
+=========================================
+**Port 8140 should be listening on Puppet Master
 
+What is Configuration Management?
 
-
-AppA
-
-Dev Machines
-
-- .net framework 4.5
-- user x has read permission on folder y
-- Port 8888 which is closed
-- user expertdba
-
-
-
-- .Net 5.0
-- user x has r/w permission on folder y
-- Port 8888 is open
-
-
-AppA version 1.3 => 1.4
-
-
-yum update
+    Not to have Configuration Drift
+    It makes you proactive rather than reactive
+    Prevents "Out-of-band" changes
+    self healing
+    Idempotence / Idempotent
 
 
 ******************
@@ -139,8 +126,16 @@ node default {
 }
 }
 
+=======================
+References
+=======================
 
-
+https://docs.puppet.com/
+https://www.puppetcookbook.com/
+https://www.edureka.co/blog/what-is-puppet/
+https://www.edureka.co/blog/chef-vs-puppet-vs-ansible-vs-saltstack/
+http://fullstack-puppet-docs.readthedocs.io/en/latest/puppet_manifests.html
+http://www.bogotobogo.com/DevOps/Puppet/puppet_basics_of_code_terminology.php
 
 
 

@@ -147,10 +147,30 @@ Playbooks
       state: latest
 
 
+## Initialize the variables define above via AdHoc command using flag "--extra-vars":
 
+ansible-playbook vars.yaml --extra-vars "myhosts=nodes pkg=telnet"
 
+=======================
+References
+=======================
 
+https://www.ansible.com/blog/topic/getting-started
+https://serversforhackers.com/c/an-ansible2-tutorial
+https://www.softwaretestinghelp.com/ansible-tutorial-1/
+https://www.ansible.com/blog/getting-started-writing-your-first-playbook
 
+======================
+Questions:
+======================
+
+Q. Why Configuration Management tools? (instead of scripting (such as bash, powershell etc.))
+Answer:
+  - Code Readability
+  - Standard way of writing Code and thus easy maintenance
+  - heavy lifting is already done for you
+  - self healing
+  - Idempotence
 
 
 
