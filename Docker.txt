@@ -12,8 +12,6 @@ Agenda:
 - Docker Workflow
 - Docker Commands
 - Docker Hub
-
-
 - Dockerfile
 - Docker Compose
 - Docker Networking
@@ -31,6 +29,13 @@ Containers  => OS/Kernel level Virtualization
 Keywords:
  - Containers vs Virtual Machines
  - cGroups and NameSpaces
+ - SDN => Software Defined Networking
+ - SDDC => Software Defined Data Center
+      => Compute Virtualization (ESXi/KVM)
+      => Storage Virtualization (SAN, EMC/IBM/NetApp)
+      => Networking Virtualization (SDN, NSX/Overlay Network)
+ - HCI => Hyper Converged Infrastucture (Nutanix)
+      => Cloud-in-a-Box
 
 =================================
 Docker Components / Architecture
@@ -79,9 +84,13 @@ docker run -itd <imagename>
       -i => interactive
       -t => terminal
       -d => detached / deamonized
+
+docker run -itd <flags> <imagename> <command>
+
 docker ps (or docker container ls)
 
-nginx
+docker commit <containerid> <imagename> => to create new image from a container
+
 
 
 Commands:
@@ -126,6 +135,40 @@ Commands:
   version     Show the Docker version information
   wait        Block until one or more containers stop, then print their exit codes
 
+=================================
+Dockerfile
+=================================
+INSTRUCTION Argument
+FROM
+RUN
+USER
+VOLUME
+ENV
+ADD
+COPY
+CMD
+EXPOSE
+
+##Sample Dockerfile
+
+FROM nginx:latest
+RUN apt-get update
+RUN apt-get install tree -y
+ENV author sk12k
+EXPOSE 80
+EXPOSE 443
+ADD test.py /tmp/test.py
+
+##Once Dockerfile is written, run following command to create image from it:
+
+docker build -t <imagename:tagname> .
+
+
+## Dockerfile Reference: https://docs.docker.com/engine/reference/builder/
+
+=================================
+Docker Networking
+=================================
 
 - bridge Network
 - Host Network
@@ -133,11 +176,40 @@ Commands:
 - Overlay => SDN (Software Defined Networking) => NSX
 - MACVLAN
 
+docker network ls
+docker network inspect <networkid>
+
+=================================
+Docker Compose
+=================================
+
+## Install Docker Compose: https://docs.docker.com/compose/install/
+
+## Work with Docker Compose: https://docs.docker.com/compose/wordpress/
 
 
+=================================
+Docker Swarm
+=================================
 
+root@~ $docker swarm init --advertise-addr 206.189.208.63
+Swarm initialized: current node (pta5cdp23gvtidredwkdfp9rg) is now a manager.
 
-References:
+To add a worker to this swarm, run the following command:
+
+    docker swarm join --token SWMTKN-1-20kxkdlfuchyey43fp57cxa09gcyoo4gyymnt3r7k62li68q5p-95cu65ydbcd0krm3upnkjx06h 206.189.208.63:2377
+
+To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
+
+## Run the following on the Worker node to add to cluster:
+
+root@sl-node:[~]$ docker swarm join --token SWMTKN-1-20kxkdlfuchyey43fp57cxa09gcyoo4gyymnt3r7k62li68q5p-95cu65ydbcd0krm3upnkjx06h 206.189.208.63:2377
+This node joined a swarm as a worker.
+
+=================================
+References
+=================================
+
 https://docs.docker.com/engine/docker-overview/
 https://docs.docker.com/v17.09/docker-for-windows/install/
 https://curl.haxx.se/docs/manpage.html
