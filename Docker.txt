@@ -210,6 +210,7 @@ This node joined a swarm as a worker.
 References
 =================================
 
+https://hub.docker.com/editions/community/docker-ce-desktop-windows
 https://docs.docker.com/engine/docker-overview/
 https://docs.docker.com/v17.09/docker-for-windows/install/
 https://curl.haxx.se/docs/manpage.html

@@ -2,20 +2,95 @@
 ##Kubernetes
 ############################
 
+Docker          => One container on one host
+Docker Compose  => Multiple Containers on Single host (Node)
+Docker Swarm    => Multiple Containers on Multiple hosts (Kubernetes)
+
+Container Orchestration Engines:
+  - K8s (Earlier known as Borg)
+  - Docker Swarm
+  - Apache Mesosphere
+  - OpenShift (RedHat)
+Managed Kubernetes Cloud Services:
+  - EKS (AWS)
+  - AKS (Azure)
+  - GKE (Google)
+
+=============================
+Kubernetes Architecture/Components
+=============================
+
+Kube Manager or Master:
+  - Kube-apiserver
+  - Kube-Controller Manager
+  - Kube-Scheduler
+  - etcd
+
+Kube Worker Nodes:
+  - Kubelet
+  - kube-proxy
+  - runtime (Docker/Rkt)
+
+k8s Keywords:
+- Pod
+- kubectl
+- Nodes
+- Cluster
+- Master
+- Worker
+- Deployment
+- Services
+- ReplicaSets
+- Replication Controllers
+- CNI => Container Network Interface
+- CSI => Container Storage Interface
+
+
+A => API Version
+K => Kind
+M => Metadata
+S => Spec (Specifications)
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: edu-pod
+spec:
+  containers:
+  - name: edu-app
+    image: busybox
+    command: ['sh', '-c', 'echo Hello Kubernetes! && sleep 3600']
+
+## Replication Controller
+    ---
+    apiVersion: v1
+    kind: ReplicationController
+    metadata:
+      name: soaktestrc
+    spec:
+      replicas: 3
+      selector:
+        app: soaktestrc
+      template:
+        metadata:
+          name: soaktestrc
+          labels:
+            app: soaktestrc
+        spec:
+          containers:
+          - name: soaktestrc
+            image: nickchase/soaktest
+            ports:
+            - containerPort: 80
 
 
 
+=============================
+References
+=============================
 
-
-
-
-
-
-
-
-
-
-
+https://thenewstack.io/kubernetes-an-overview/
+https://hub.docker.com/editions/community/docker-ce-desktop-windows
 
 
 .
