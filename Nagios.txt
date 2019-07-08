@@ -1,0 +1,101 @@
+##############################
+## Nagios
+##############################
+
+Keywords:
+
+CloudWatch => SNS => Auto Scaling Groups => EC2 created/destroyed
+Lambda => Serverless (Function-a-a-Service)
+- Centralized Log Management Tools
+    - LogStash
+    - LogRythm
+    - Qradar
+
+- Visualization Tools
+    - Kibana
+    - Grafana
+
+- APM => Application Performance Management
+    e.g. New Relic / App Dynamics
+
+- Chaos Monkey => Netflix
+    - Cloud
+    - DevOps
+- Spinnaker => Deployment Automation tool
+- Rackspace+NASA => OpenStack
+
+============================
+Installation/Configuration
+============================
+
+Nagios Core => OpenSource (Free version)
+Nagios XI   => Enterprise (Paid Version)
+
+sudo htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
+
+cfg_file=/usr/local/nagios/etc/objects/dbnodes.cfg
+cfg_dir=/usr/local/nagios/etc/servers
+
+##Installation Script for Nagios XI:
+
+curl https://assets.nagios.com/downloads/nagiosxi/install.sh | sh
+
+##Home Folder:
+
+/usr/local/nagios/etc
+
+cfg_file=/usr/local/nagios/etc/objects/commands.cfg
+
+cfg_dir=/usr/local/nagios/etc/servers
+
+Verify Nagios Configuration before service restart:
+
+/usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg
+
+============================
+Nagios Object Definitions
+============================
+
+define host {
+      use                     generic-host
+      host_name               sl-master
+      alias                   slmaster
+      address                 206.189.208.63
+      max_check_attempts      5
+      check_period            24x7
+      notification_interval   30
+      notification_period     24x7
+}
+
+define service {
+      use                   generic-service
+      host_name             sl-master
+      service_description   PING
+      check_command         check_ping!100.0,20%!500.0,60%
+}
+define service {
+      use                   generic-service
+      host_name             sl-master
+      service_description   SSH
+      check_command         check_ssh
+}
+
+
+============================
+References:
+============================
+
+Installation:
+Nagios Core: https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/4/en/quickstart.html
+Nagios XI: https://assets.nagios.com/downloads/nagiosxi/docs/Installing-Nagios-XI-Manually-on-Linux.pdf
+
+Object Definitions:
+https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/3/en/objectdefinitions.html
+
+Nagios XI Quick Start:
+https://assets.nagios.com/downloads/nagiosxi/docs/Installing-Nagios-XI-Manually-on-Linux.pdf
+
+
+
+
+.

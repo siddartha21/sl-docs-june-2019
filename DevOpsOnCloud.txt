@@ -1,0 +1,68 @@
+#########################
+##DevOps and Cloud
+#########################
+
+Cloud Keywords:
+  1. Anything-as-a-Service
+  2. Pay-as-you-go
+  3. Renting instead of buying (Consumption Model)
+  4. CapEx vs OpEx
+  5. Getting rid of the overhead of DC maintenance
+  6. Self-service Model
+  7. Pet vs Cattle
+
+CapEx => Capital Expenditure
+OpEx  => Operational Expenditure
+
+Advantages of CapEx getting converted into OpEx:
+  1. Elasticity (pay as you go Model)
+  2. CapEx approvals are harder to get than OpEx approvals
+
+GitHub => Hosted Git solution
+
+=============================
+DevOps Services from AWS
+=============================
+CodeSuite Services (CodeCommit/CodePipeline/CodeBuild/CodeDeploy)
+Git/GitHub              => AWS CodeCommit
+Jenkins                 => AWS CodePipeline
+Maven                   => AWS CodeBuild
+XL Deploy/UC Deploy     => AWS CodeDeploy
+Puppet/Ansible          => AWS OpsWorks (Puppet and Chef as a Service)
+Docker/Kubernetes/Swarm => AWS ECS and AWS EKS
+Terraform (I-a-C)       => CloudFormation
+
+************************
+AWS Dev Tools Workflow:
+************************
+CodeCommit => CodePipeline => CodeBuild => CodeDeploy => EC2/ECS/lambda/VMware
+
+******************
+Cloud Models:
+******************
+IaaS  => AWS EC2, Droplets
+PaaS  => AWS Elastic Beanstalk, Heroku
+SaaS  => DropBox, google Drive, Office 365
+
+******************
+Cloud Deployment Models:
+******************
+Public Cloud    => AWS, Azure, GCP
+
+Private Cloud   => Within your own DataCenter (Most popular cloud OS -> OpenStack)
+  (Typically used by Banking and Financial Organizations)
+
+Hybrid Cloud    => Combination of Public+private or Public+On-premise
+
+
+=============================
+Cloud references:
+=============================
+
+VSTS (Visual Studio Team Services) => Azure DevOps
+https://docs.microsoft.com/en-in/azure/devops/?view=azure-devops
+aws.training
+https://aws.amazon.com/blogs/apn/the-5-pillars-of-the-aws-well-architected-framework/
+https://d1.awsstatic.com/whitepapers/architecture/AWS_Well-Architected_Framework.pdf
+https://www.bmc.com/blogs/saas-vs-paas-vs-iaas-whats-the-difference-and-how-to-choose/
+https://www.hostingadvice.com/how-to/iaas-vs-paas-vs-saas/

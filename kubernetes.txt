@@ -26,7 +26,7 @@ Managed Kubernetes Cloud Services:
   - Services
   - ReplicaSets
   - Replication Controllers
-  
+
   CRI => Container Runtime Interfaces
     - Docker
     - rkt
@@ -60,13 +60,26 @@ Kube Worker Nodes:
   - kube-proxy
   - runtime (Docker/Rkt)
 
+===========================
+Kubernetes Primitives/Objects
+===========================
+  Pod
+  ReplicaSets
+  Deployments
+  Services
 
 
-A => API Version
-K => Kind
-M => Metadata
-S => Spec (Specifications)
+YAML Files
 
+  A => API version
+  K => Kind ## this defines the type of object/primitive
+  M => Metadata
+  S => Specs (Specifications)
+
+***************
+edu-pod.yml
+***************
+---
 apiVersion: v1
 kind: Pod
 metadata:
@@ -77,29 +90,55 @@ spec:
     image: busybox
     command: ['sh', '-c', 'echo Hello Kubernetes! && sleep 3600']
 
-## Replication Controller
-    ---
-    apiVersion: v1
-    kind: ReplicationController
+***************
+web-rc.yml
+***************
+## Replication Controller Sample
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: web
+  labels:
+    name: web
+    app: demo
+spec:
+  replicas: 3
+  template:
     metadata:
-      name: soaktestrc
+      labels:
+        name: web
     spec:
-      replicas: 3
-      selector:
-        app: soaktestrc
-      template:
-        metadata:
-          name: soaktestrc
-          labels:
-            app: soaktestrc
-        spec:
-          containers:
-          - name: soaktestrc
-            image: nickchase/soaktest
-            ports:
-            - containerPort: 80
+      containers:
+        - name: web
+          image: xiaopeng163/docker-flask-demo:1.0
+          ports:
+            - containerPort: 5000
+              name: http
+              protocol: TCP
 
+***************
+nginx-Deployment.yml
+***************
 
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: edu-nginx
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.7.9
+        ports:
+        - containerPort: 80
 
 =============================
 References
@@ -107,6 +146,11 @@ References
 
 https://thenewstack.io/kubernetes-an-overview/
 https://hub.docker.com/editions/community/docker-ce-desktop-windows
-
-
-.
+https://x-team.com/blog/introduction-kubernetes-architecture/
+https://www.cncf.io/
+https://kubernetes.io/docs/home/
+https://www.edureka.co/blog/kubernetes-architecture/
+https://thenewstack.io/kubernetes-an-overview/
+https://www.katacoda.com/courses/kubernetes/playground
+https://kubernetes.io/docs/tasks/tools/install-minikube/
+https://chocolatey.org/ (for Windows users)
